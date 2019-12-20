@@ -3,7 +3,7 @@ Double click Jinke.jar to play the software, "sample codes" file is mainly my co
 
 Please be aware that the software has been used for commercial purpose and the whole project codes could not be publicized. The code files in src are only samples. \
 Please see the below link to see the whole software introduction.
-# https://github.com/jinco-tech-team/IEM-BP-Desktop-Software
+https://github.com/jinco-tech-team/IEM-BP-Desktop-Software
 
 # Codes Introduction:
 database:\
@@ -22,6 +22,6 @@ panels:\
 BP_Bargraph.java: Blood pressure and heart rate data visualization - Bar Chart.\
 BP_Piegraph.java: Blood pressure and heart rate data visualization - Pie Chart.\
 BP_Profile.java: Blood pressure and heart rate data visualization - Profile Chart.\
-Charts.java: Chart layout.\
+Charts.java: Chart layout.
 
 For specific details, see comments in codes in these files.
