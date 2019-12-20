@@ -55,7 +55,7 @@ public class H2_DB {
 	
 	
 	/**
-	 * H2数据库构造函数
+	 * H2 database constructor
 	 */
 	public H2_DB() {
 		if(url == "jdbc:h2:file:") {
@@ -85,7 +85,7 @@ public class H2_DB {
 	
 	
 	/**
-	 * 获取某一患者信息
+	 * Get information about a patient
 	 * @param code
 	 * @return
 	 */
@@ -123,8 +123,8 @@ public class H2_DB {
 	}
 	
 	/**
-	 * 检验ID是否可用
-	 * @param id 待检验ID
+	 * Check if ID is available
+	 * @param id - Pending ID
 	 * @return
 	 */
 	public boolean checkPatientID(String id) {
@@ -210,7 +210,7 @@ public class H2_DB {
 
 
 	/**
-	 * 删除患者信息及其数据
+	 * Delete patient information and its data
 	 * @param code
 	 */
 	public void deletePatient(String code) {
@@ -224,9 +224,9 @@ public class H2_DB {
 
 	
 	/**
-	 * 导出患者信息到xml
-	 * @param code	患者id
-	 * @param file	文件路径
+	 * Export patient information to xml
+	 * @param code	Patient id
+	 * @param file	file path
 	 */
 	public void exportPatient(String code[], String file) {
 		Document document = DocumentHelper.createDocument();
@@ -460,7 +460,7 @@ public class H2_DB {
 		}
 		if(analyse.getValidNum(Analyse.DAY) > 0) {
 			Element day = recording.addElement("Day");
-			DecimalFormat df = new DecimalFormat("0.0");//设置保留位数
+			DecimalFormat df = new DecimalFormat("0.0");//Set the number of reserved digits
 			newElement("AvgDias", "白天舒张压平均值", analyse.getDataAvg(Analyse.DBP, Analyse.DAY)+"", day);
 			newElement("AvgHR", "白天心率平均值", analyse.getDataAvg(Analyse.HR, Analyse.DAY)+"", day);
 			newElement("AvgPulsPress", "白天脉压差平均值", (analyse.getDataAvg(Analyse.SBP, Analyse.DAY) - analyse.getDataAvg(Analyse.DBP, Analyse.DAY))+"", day);
@@ -510,7 +510,7 @@ public class H2_DB {
 		}
 		if(analyse.getValidNum(Analyse.DAY) > 0 && analyse.getValidNum(Analyse.NIGHT) > 0) {
 			Element all = recording.addElement("All");
-			DecimalFormat df = new DecimalFormat("0.0");//设置保留位数
+			DecimalFormat df = new DecimalFormat("0.0");//Set the number of reserved digits
 			newElement("bloodPressureMorningAverageDiastolic", "晨峰血压-舒张压平均值", df.format(analyse.getMPBSAvg(Analyse.DBP)), all);
 			newElement("bloodPressureMorningAverageSystolic", "晨峰血压-收缩压平均值", df.format(analyse.getMPBSAvg(Analyse.SBP)), all);
 			ArrayList<Integer> indexList = analyse.getMPBS();
@@ -812,8 +812,8 @@ public class H2_DB {
 	
 	
 	/**
-	 * 导入患者信息
-	 * @param f	xml文件路径
+	 * Import patient information
+	 * @param f	xml file path
 	 */
 	public int importPatient(File f) {
 		SAXReader reader = new SAXReader();
@@ -866,8 +866,8 @@ public class H2_DB {
 	
 	
 	/**
-	 * 获取患者报告
-	 * @param code	患者ID
+	 * Get patient report
+	 * @param code	Patient ID
 	 * @return
 	 */
 	public String getReport(String code, String date) {
@@ -886,7 +886,7 @@ public class H2_DB {
 	
 	
 	/**
-	 * 插入患者诊断报告
+	 * Patient diagnosis report
 	 * @param code
 	 * @param report
 	 */
@@ -901,7 +901,7 @@ public class H2_DB {
 	
 	
 	/**
-	 * 更新患者诊断报告
+	 * Update patient diagnostic report
 	 * @param code
 	 * @param report
 	 */
@@ -923,7 +923,7 @@ public class H2_DB {
 	
 	
 	/**
-	 * 删除患者诊断报告
+	 * Delete patient diagnosis report
 	 * @param code
 	 */
 	public void deletePatientReport(String code, String date) {
@@ -938,7 +938,7 @@ public class H2_DB {
 	
 	
 	/**
-	 * 获取患者信息列表
+	 * Get patient information list
 	 * @return
 	 */
 	public String[][] getPatientList() {
@@ -965,8 +965,8 @@ public class H2_DB {
 	
 	
 	/**
-	 * 根据患者name或者id获取患者列表
-	 * @param t 患者id
+	 * Get patient list based on patient name or id
+	 * @param t patient id
 	 * @return
 	 */
 	public String[][] getPatientList(String t) {
@@ -993,7 +993,7 @@ public class H2_DB {
 	
 	
 	/**
-	 * 初始化cache
+	 * Initialize the cache
 	 * @param code
 	 */
 	public void initCache(String code) {
@@ -1025,7 +1025,7 @@ public class H2_DB {
 	
 	
 	/**
-	 * 根据患者ID、记录日期、时间、状态查询记录个数
+	 * Query the number of records based on patient ID, recording date, time, and status
 	 * @param code
 	 * @param d
 	 * @param t
@@ -1046,7 +1046,7 @@ public class H2_DB {
 	
 	
 	/**
-	 * 插入患者测量记录
+	 * Insert patient measurement record
 	 * @param d_id
 	 * @param p_id
 	 * @param d_date
@@ -1083,7 +1083,7 @@ public class H2_DB {
 	
 	
 	/**
-	 * 对话框“打开患者”列表信息
+	 * Dialog "Open Patient" List Information
 	 * @param code
 	 * @return
 	 */
@@ -1125,7 +1125,7 @@ public class H2_DB {
 	}
 	
 	/**
-	 * 窗口中数据图表
+	 * Data chart in window
 	 * @param code
 	 * @param date
 	 * @return
@@ -1189,7 +1189,7 @@ public class H2_DB {
 	
 	
 	/**
-	 * 导出患者数据到Excel
+	 * Export patient data to Excel
 	 * @param code
 	 * @param date
 	 */
@@ -1247,7 +1247,7 @@ public class H2_DB {
 	
 	
 	/**
-	 * 删除某天数据
+	 * Delete data for a certain day
 	 * @param code
 	 * @param date
 	 */
@@ -1262,7 +1262,7 @@ public class H2_DB {
 	
 	
 	/**
-	 * 配置信息获取
+	 * Get configuration information
 	 * @return
 	 */
 	public Configuration getConfiguration() {
@@ -1415,7 +1415,7 @@ public class H2_DB {
 	}
 	
 	/**
-	 * 软件配置表中counter自加
+	 * Counter auto-increment in software configuration table
 	 */
 	public void setCounter() {
 		try {
@@ -1506,9 +1506,9 @@ public class H2_DB {
 
 
 	/**
-		 * 导出患者信息到xml
-		 * @param code	患者id
-		 * @param file	文件路径
+		 * Export patient information to xml
+		 * @param code	patient id
+		 * @param file	file path
 		 */
 		public void exportPatient(String code, String file) {
 			
