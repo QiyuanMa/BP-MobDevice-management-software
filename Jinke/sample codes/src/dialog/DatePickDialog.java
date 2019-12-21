@@ -33,14 +33,14 @@ public class DatePickDialog extends JDialog implements ActionListener, MouseList
 	private boolean click = false;
 	public DatePickDialog(Calendar c, JFrame f, Point p, Dimension d) {
 		
-		// 父类构造函数，有模式对话框
+		// Parent class constructor with modal dialog
 		super(f, "新建患者信息", true);
 		
-		// 无布局，不可伸缩
+		// No layout, not scalable
 		setLayout(null);
 		setResizable(false);
 		
-		// 固定大小
+		// Fixed size
 		int w = 400, h = 300;
 		setBounds(p.x + (d.width - w) / 2, p.y + (d.height - h) / 2, w, h);
 
@@ -92,7 +92,7 @@ public class DatePickDialog extends JDialog implements ActionListener, MouseList
 	}
 	
 	/**
-	 * 更新日期选择控件中显示内容
+	 * Update the date selection control
 	 */
 	private void flushCalendar() {
 		calendar.set(Calendar.DAY_OF_MONTH, 1);
