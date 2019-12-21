@@ -4,9 +4,9 @@ public class Input {
 	
 	
 	/**
-	 * 判断字符串是否为数字
-	 * @param t	输入字符串
-	 * @return	bool 布尔逻辑值
+	 * Determines whether the string is a number
+	 * @param t	Input string
+	 * @return	bool logic value
 	 */
 	public static boolean isInteger(String t) {
 		return t.matches("[0-9]+");
@@ -14,7 +14,7 @@ public class Input {
 	
 	
 	/**
-	 * 判断是否为整数或浮点数
+	 * Determines whether it is an int or float
 	 * @param t
 	 * @return
 	 */
@@ -24,7 +24,7 @@ public class Input {
 	
 	
 	/**
-	 * 判断是否为整数或为空
+	 * Determines whether it is an int or null
 	 * @param t
 	 * @return
 	 */
@@ -34,7 +34,7 @@ public class Input {
 	
 	
 	/**
-	 * 判断是否为浮点数或为空
+	 * Determines whether it is a flout or null
 	 * @param t
 	 * @return
 	 */
@@ -44,7 +44,7 @@ public class Input {
 	
 	
 	/**
-	 * 格式化字符串，构造sql语句使用
+	 * Format string, construct sql statement to use
 	 * @param t
 	 * @return
 	 */
@@ -53,7 +53,7 @@ public class Input {
 	}
 	
 	/**
-	 * 格式化字符串，构造sql语句使用
+	 * Format string, construct sql statement to use
 	 * @param t
 	 * @return
 	 */
@@ -64,9 +64,9 @@ public class Input {
 	
 	
 	/**
-	 * 判断是否为空或定长整数
-	 * @param t 字符串
-	 * @param n 长度
+	 * Determine if it is an null or fixed-length int
+	 * @param t string
+	 * @param n length
 	 * @return
 	 */
 	public static boolean isEmptyOrInteger(String t, int n) {
