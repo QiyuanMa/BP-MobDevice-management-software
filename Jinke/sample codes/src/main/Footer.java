@@ -22,7 +22,7 @@ public class Footer extends JPanel {
 	 */
 	private static final long serialVersionUID = 7890477447295450646L;
 
-	// 正确及错误图标
+	// Right and wrong icons
 	private static final 	ImageIcon State_Ok = new ImageIcon("./icon/ok.png"), 
 							State_Error = new ImageIcon("./icon/error.png");
 	
@@ -33,7 +33,7 @@ public class Footer extends JPanel {
 	
 	public Footer(MainFrame f) {
 		
-		// 设置格式及字体
+		// Format and font
 		label.setBackground(new Color(148, 207, 91));
 		label.setOpaque(true);
 		label.setFont(new MyFont(0, 18).getFont());
@@ -70,7 +70,7 @@ public class Footer extends JPanel {
 			}
 		});
 		
-		// 设施布局
+		// Facility layout
 		this.setLayout(new BorderLayout());
 		
 		this.add(BorderLayout.WEST, tips);
@@ -89,7 +89,7 @@ public class Footer extends JPanel {
 	}
 	
 	/**
-	 * 状态栏显示当前选择病人信息
+	 * Status bar shows information of currently selected patient
 	 * @param p
 	 */
 //	public void showPatient() {
@@ -103,7 +103,7 @@ public class Footer extends JPanel {
 //	}
 	
 	/**
-	 * 状态栏显示当前选择病人信息，包含数据监测时间
+	 * Status bar displays information of currently selected patient, including data monitoring time
 	 * @param p
 	 */
 //	public void showPatientWithDate() {
