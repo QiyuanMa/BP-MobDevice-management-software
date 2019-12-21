@@ -26,25 +26,25 @@ public class BP_Bargraph {
 	public BP_Bargraph(JTable t) {
 		table = t;
 		
-		StandardChartTheme standardChartTheme=new StandardChartTheme("CN");                     //设置标题字体
-        standardChartTheme.setExtraLargeFont(new Font("Yahei Consolas Hybrid",Font.BOLD,20));                    //设置图例的字体
-        standardChartTheme.setRegularFont(new Font("Yahei Consolas Hybrid",Font.PLAIN,12));					//设置轴向的字体          
+		StandardChartTheme standardChartTheme=new StandardChartTheme("CN");                     //Set title font
+        standardChartTheme.setExtraLargeFont(new Font("Yahei Consolas Hybrid",Font.BOLD,20));                    //Set the font of the legend
+        standardChartTheme.setRegularFont(new Font("Yahei Consolas Hybrid",Font.PLAIN,12));					//Set inline font          
         standardChartTheme.setLargeFont(new Font("Yahei Consolas Hybrid",Font.PLAIN,12)); 
-        standardChartTheme.setRangeGridlinePaint(Color.GRAY);//纵坐标格线颜色                
-        standardChartTheme.setDomainGridlinePaint(Color.GRAY);//横坐标格线颜色              
+        standardChartTheme.setRangeGridlinePaint(Color.GRAY);//Ordinate grid color            
+        standardChartTheme.setDomainGridlinePaint(Color.GRAY);//Abscissa grid color        
         standardChartTheme.setPlotBackgroundPaint(Color.WHITE);
         
         DefaultCategoryDataset dataset = getBarDataSet(Analyse.SBP); 
-        ChartFactory.setChartTheme(standardChartTheme); //应用主题样式      
+        ChartFactory.setChartTheme(standardChartTheme); //Apply theme style    
         chart[0] = ChartFactory.createBarChart(
-        		"直方图",      // 图表名  
-	            "",               // 横轴标签文字 
-	            "%收缩压",               // 纵轴标签文字  
-	            dataset,          // 图表的数据集合 
+        		"直方图",      // Chart name
+	            "",               // Horizontal axis label text
+	            "%收缩压",               // Vertical axis label text
+	            dataset,          // Data collection for chart
 	            PlotOrientation.VERTICAL,
-	            false,               // 是否显示图表中每条数据序列的说明
-	            true,              // 是否显示工具提示
-	            false);             // 是否显示图表中设置的url网络连接   
+	            false,               // Whether to show a description of each data series in the chart
+	            true,              // Whether to show tooltips
+	            false);             // Whether to display the url network connection set in the chart  
         
         CategoryPlot categoryPlot = (CategoryPlot) chart[0].getPlot();  
         categoryPlot.setNoDataMessage("没有足够的测量值用于评估。");
@@ -53,16 +53,16 @@ public class BP_Bargraph {
 	    chartPanel[0] = new ChartPanel(chart[0],true);
 	    
 	    dataset = getBarDataSet(Analyse.DBP); 
-        ChartFactory.setChartTheme(standardChartTheme); //应用主题样式      
+        ChartFactory.setChartTheme(standardChartTheme); //Apply theme style    
         chart[1] = ChartFactory.createBarChart(
-        		"",      // 图表名  
-	            "",               // 横轴标签文字 
-	            "%舒张压",               // 纵轴标签文字  
-	            dataset,          // 图表的数据集合 
+        		"",      // Chart name 
+	            "",               // Horizontal axis label text
+	            "%舒张压",               // Vertical axis label text 
+	            dataset,          // Data collection for chart
 	            PlotOrientation.VERTICAL,
-	            false,               // 是否显示图表中每条数据序列的说明
-	            true,              // 是否显示工具提示
-	            false);             // 是否显示图表中设置的url网络连接   
+	            false,               // Whether to show a description of each data series in the chart
+	            true,              // Whether to show tooltips
+	            false);             // Whether to display the url network connection set in the chart
         
         categoryPlot = (CategoryPlot) chart[1].getPlot();  
         categoryPlot.setNoDataMessage("没有足够的测量值用于评估。");
@@ -71,16 +71,16 @@ public class BP_Bargraph {
         chartPanel[1] = new ChartPanel(chart[1],true);
         
         dataset = getBarDataSet(Analyse.HR); 
-        ChartFactory.setChartTheme(standardChartTheme); //应用主题样式      
+        ChartFactory.setChartTheme(standardChartTheme); //Apply theme style    
         chart[2] = ChartFactory.createBarChart(
-        		"",      // 图表名  
-	            "",               // 横轴标签文字 
-	            "%心率",               // 纵轴标签文字  
-	            dataset,          // 图表的数据集合 
+        		"",      // chart name
+	            "",               // Horizontal axis label text
+	            "%心率",               // Vertical axis label text 
+	            dataset,          // Data collection for chart
 	            PlotOrientation.VERTICAL,
-	            false,               // 是否显示图表中每条数据序列的说明
-	            true,              // 是否显示工具提示
-	            false);             // 是否显示图表中设置的url网络连接   
+	            false,               // Whether to show a description of each data series in the chart
+	            true,              // Whether to show tooltips
+	            false);             // Whether to display the url network connection set in the chart
         
         categoryPlot = (CategoryPlot) chart[2].getPlot();  
         categoryPlot.setNoDataMessage("没有足够的测量值用于评估。");
