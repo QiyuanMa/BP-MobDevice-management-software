@@ -62,21 +62,21 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 	private Header header = null;
 	public Footer footer = new Footer(this);
 	
-	// 窗口、控件
+	// Windows, controls
 	private Statistic statistic;
 	private Charts charts;
 	private Print print;
 	private Report report;
 	
-	// 图标按钮
+	// Icon button
 	public JButton[] buttons = new JButton[10];
 	
-	// 菜单栏、菜单及菜单项
+	// Menu bar, menus and menu items
 	private JMenuBar bar = new JMenuBar();
 	private JMenu[] menus = new JMenu[6];
 	public JMenuItem[] its = new JMenuItem[17];
 	
-	// 菜单项索引
+	// Menu item index
 	private static final int	File_Import_Patient = 0,
 								File_Store_Data 	= 1,
 								File_Restore_Data 	= 2,
@@ -94,7 +94,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 								Setting_Encode		= 14,
 								Setting_FileName	= 15,
 								Help_About 			= 16;
-	// 工具栏索引项
+	// Toolbar index entry
 	private static final int	Tool_New			= 0,
 								Tool_Open			= 1,
 								Tool_Info			= 2,
@@ -108,29 +108,29 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 								
 	
 	
-	// 字体，默认格式
+	// Font, default format
 	private MyFont font = new MyFont();
 	
 	public MainFrame() {
 		
-		// 设置窗口标题及布局方式
+		// Set window title and layout
 		super("北京世纪今科动态血压监测软件");
 		this.setLayout(new BorderLayout());
 		
-		// 获取当前屏幕尺寸
+		// Get the current screen size
 		Dimension screensize = Toolkit.getDefaultToolkit().getScreenSize();
 		int width = (int)screensize.getWidth();
 		int height = (int)screensize.getHeight();
 		
-		// 设置窗口位置
+		// Set window position
 		int x = (int)(width * 0.2);
 		int y = (int)(height * 0.2);
 		this.setBounds(x, y, (int)(width * 0.6), (int)(height * 0.6));
 		
-		// 设置窗口图标
+		// Set window icon
 		setIconImage(getToolkit().getImage("./icon/Jinco.png"));
 
-		// 设置菜单栏及菜单
+		// Set menu bar and menu
 		bar.setOpaque(true);
 		String[] t1 = {" 文件 ", " 患者 ", " 测量数据 ", " 设置 ", " 帮助 ", " 数据备份 "};
 		for (int i = 0; i < menus.length - 1; i++) {
@@ -141,7 +141,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			bar.add(menus[i]);
 		}
 		
-		// 设置菜单项
+		// Setting menu items
 		String[] t2 = {" 导入患者 ", " 存储数据 ", " 恢复数据 "," 退出 ", " 新建患者 ", " 患者列表 ", " 导出患者 ", " 删除患者 ", " 导出详细信息", " 导出Excel ", " 删除数据 ", " 设备端口 ", " 时间设置 ", " 血压正常范围 ", " 自动编号设置", " 文件名称设置", " 关于  "};
 		for (int i = 0; i < its.length; i++) {
 			its[i] = new JMenuItem(t2[i]);
@@ -150,7 +150,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			its[i].addActionListener(this);
 		}
 		
-		// 菜单添加
+		// Menu add
 		menus[0].add(its[File_Import_Patient]);
 		menus[5] = new JMenu(t1[5]);
 		menus[5].setFont(font.getFont());
@@ -177,7 +177,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		
 		menus[4].add(its[Help_About]);
 		
-		// 按钮设置
+		// Button settings
 		ImageIcon[] icon = new ImageIcon[10];
 		icon[0] = new ImageIcon("./icon/new.png");
 		icon[1] = new ImageIcon("./icon/open.png");
@@ -243,14 +243,14 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		
 		if (e.getSource() == its[Patient_New] || e.getSource() == buttons[Tool_New]) {
 			/**
-			 * 新建患者
+			 * New patient
 			 */
 			new NewDialog(this, this.getLocation(), getSize());
 			
 			
 		} else if (e.getSource() == its[Patient_List] || e.getSource() == buttons[Tool_Open]) {
 			/**
-			 * 患者列表
+			 * Patient list
 			 */
 			
 			OpenDialog openDialog = new OpenDialog(this, this.getLocation(), getSize());
@@ -275,7 +275,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 
 		} else if (e.getSource() == buttons[Tool_Info]) {
 			/**
-			 * 患者信息
+			 * Patient information
 			 */
 			PatientInfoDialog patientInfoDialog = new PatientInfoDialog(this, getLocation(), getSize(), Cache.getCode());
 			int key = patientInfoDialog.showDialog();
@@ -294,36 +294,36 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			} else {
 				footer.showPatient();
 			}
-			// 显示状态栏
+			// Show status bar
 			
 		} else if (e.getSource() == its[File_Exit]) {
 			/**
-			 * 退出
+			 * drop out
 			 */
 			this.dispose();
-			// 显示状态栏
+			// Show status bar
 			
 		} else if (e.getSource() == its[Setting_Standard]) {
 			/**
-			 * 血压标准
+			 * Blood pressure standard
 			 */
 			new StandardDialog(this, getLocation(), getSize());
 			
 		} else if (e.getSource() == its[Setting_FileName]) {
 			/**
-			 * 文件名
+			 * file name
 			 */
 			new FileNameDialog(this, getLocation(), getSize());
 			
 		} else if (e.getSource() == its[Setting_Day_Night]) {
 			/**
-			 * 设置白天夜晚开始时间
+			 * Set day and night start time
 			 */
 			new DayNightDialog(this, getLocation(), getSize());
 			
 		} else if (e.getSource() == buttons[Tool_Datalist]) {
 			/**
-			 * 患者数据列表
+			 * Patient data list
 			 */
 			DataListDialog dataListDialog = new DataListDialog(this, getLocation(), getSize(), Cache.getCode());
 			if (dataListDialog.showDialog() == 1) {
@@ -342,19 +342,19 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			
 		} else if (e.getSource() == buttons[Tool_Statistic]) {
 			/**
-			 * 患者数据表
+			 * Patient data sheet
 			 */
 			this.addstatistic(new Statistic(Cache.getCode(), Cache.getDate()));
 			
 		} else if (e.getSource() == buttons[Tool_Paint]) {
 			/**
-			 * 绘图
+			 * Drawing
 			 */
 			closeAll();
 			try {
 				charts = new Charts(this, statistic.getTable());
 			} catch (NumberFormatException | ParseException e1) {
-				// TODO 自动生成的 catch 块
+				// TODO auto-generated catch block
 				e1.printStackTrace();
 			}
 			this.add(charts);
@@ -362,7 +362,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			
 		} else if (e.getSource() == buttons[Tool_Report]) {
 			/**
-			 * 报告
+			 * report
 			 */
 			closeAll();
 			try {
@@ -375,7 +375,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			this.revalidate();
 		} else if (e.getSource() == buttons[Tool_Print]) {
 			/**
-			 * 打印
+			 * print
 			 */
 			closeAll();
 			try {
@@ -388,7 +388,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			
 		} else if (e.getSource() == buttons[Tool_Upload]) {
 			/**
-			 * 设备测量协议设置
+			 * Device measurement protocol settings
 			 */
 			if (Device.deviceIndentify(Cache.getCom())) {
 				new DeviceDialog(this, getLocation(), getSize());
@@ -398,7 +398,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			
 		} else if (e.getSource() == its[Setting_Implement]) {
 			/**
-			 * 盒子接口
+			 * Box interface
 			 */
 			new MyImplement(this, getLocation(), getSize());
 			if (Device.deviceIndentify(Cache.getCom())) {
@@ -410,7 +410,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			
 		} else if (e.getSource() == buttons[Tool_Download]) {
 			/**
-			 * 盒子内容读取
+			 * Box content read
 			 */
 			if (Device.deviceIndentify(Cache.getCom())) {
 				Device device = new Device(Cache.getCom());
@@ -471,7 +471,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			}
 		} else if (e.getSource() == its[Data_Delete]) {
 			/**
-			 * 删除数据
+			 * delete data
 			 */
 			if (MessageDialog.showConfirm(null, "确认删除？\r\n本操作将删除此次测量所有数据！") == 0) {
 				H2_DB h2_DB = new H2_DB();
@@ -488,7 +488,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			
 		} else if (e.getSource() == its[Patient_Delete]) {
 			/**
-			 * 删除患者
+			 * delete patient info
 			 */
 			if (MessageDialog.showConfirm(null, "确认删除？本操作将删除此患者所有数据！") == 0) {
 				H2_DB h2_DB = new H2_DB();
@@ -506,7 +506,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			
 		} else if (e.getSource() == its[Patient_Export]) {
 			/**
-			 * 导出患者信息到xml
+			 * Export patient information to xml
 			 */
 			LookAndFeel origenal = UIManager.getLookAndFeel();
 			try {
@@ -542,7 +542,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 			
 		} else if (e.getSource() == its[File_Import_Patient]) {
 			/**
-			 * 导入患者信息
+			 * Import patient information
 			 */
 			LookAndFeel origenal = UIManager.getLookAndFeel();
 			try {
@@ -589,7 +589,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		}
 		else if (e.getSource() == its[Data_Export_Excel]) {
 			/**
-			 * 导出患者信息到Excel
+			 * Export patient information to Excel
 			 */
 			
 			LookAndFeel origenal = UIManager.getLookAndFeel();
@@ -700,7 +700,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 		} else if (e.getSource() == its[Setting_Encode]) {
 			new EncodeDialog(this, getLocation(), getSize());
 		} else if (e.getSource() == its[Data_Export_XML]) {
-			// 导出患者详细信息+数据+计算变量
+			// Export patient details + data + calculated variables
 			LookAndFeel origenal = UIManager.getLookAndFeel();
 			try {
 				UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -729,7 +729,7 @@ public class MainFrame extends JFrame implements ActionListener, ComponentListen
 				try {
 					h2_DB.exportPatientAndRecord(Cache.getCode(), fileChooser.getSelectedFile().getAbsolutePath(), statistic.getTable());
 				} catch (ParseException e1) {
-					// TODO 自动生成的 catch 块
+					// TODO auto-generated catch block
 					e1.printStackTrace();
 				}
 				h2_DB.close();
