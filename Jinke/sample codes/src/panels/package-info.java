@@ -2,7 +2,7 @@
  * 
  */
 /**
- * @author Lova
+ * @author Mike
  *
  */
 package panels;
