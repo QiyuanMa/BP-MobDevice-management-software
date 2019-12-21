@@ -39,14 +39,14 @@ public class NewDialog extends JDialog implements ActionListener, KeyListener {
 	 */
 	private static final long serialVersionUID = 287496242069676388L;
 
-	// 患者基本信息 通讯信息及附加诊断报告
+	// Basic patient information, communication information and additional diagnostic reports
 	private	JPanel	basic_info		= new JPanel(), 
 					contact_info	= new JPanel(),
 					hospitalization = new JPanel();
 	
-	// 文本框，其中第2个未使用
+	// Text box, 2nd unused
 	private JTextField[] tx = new JTextField[16];
-	// 常用常量
+	// Common constants
 	private static final int	Code 		= 0,
 								Name 		= 1,
 								Sex 		= 2,
@@ -65,46 +65,46 @@ public class NewDialog extends JDialog implements ActionListener, KeyListener {
 								MedRecord	= 15;
 	// BMI
 	JLabel bmi = new JLabel("BMI：--");
-	// 自动编号控制
+	// Automatic numbering control
 	JCheckBox auto = new JCheckBox("自动编号");
 
-	// 默认格式字体
+	// Default format font
 	private MyFont font = new MyFont();
 	
-	// 性别选择下拉类表表单项
+	// Gender selection drop-down list form item
 	private static final String[] Sex_List = {" -", " 男", " 女"};
 	private JComboBox<String> sex = new JComboBox<>(Sex_List);
 	
-	// 按键及常用常量
+	// Buttons and common constants
 	private JButton[] buttons = new JButton[3];
 	private static final int	Button_Ok 		= 0,
 								Button_Clear 	= 1,
 								Button_Close	= 2;
 	private JButton datePick = new JButton(new ImageIcon("./icon/calendar.png"));
 	
-	// 数据库
+	// database
 	H2_DB h2 = new H2_DB();
 	
 	/**
-	 * 构造函数
-	 * @param f	窗口
-	 * @param p 位置信息
-	 * @param d 大小信息
+	 * Constructor
+	 * @param f	window
+	 * @param p location information
+	 * @param d size information
 	 */
 	public NewDialog(JFrame f, Point p, Dimension d) {
 		
-		// 父类构造函数，有模式对话框
+		// Parent class constructor with modal dialog
 		super(f, "新建患者信息", true);
 		
-		// 无布局，不可伸缩
+		// No layout, not scalable
 		setLayout(null);
 		setResizable(false);
 		
-		// 固定大小
+		// Fixed size
 		int w = 800, h = 650;
 		setBounds(p.x + (d.width - w) / 2, p.y + (d.height - h) / 2, w, h);
 		
-		// 文本标签设置
+		// Text label settings
 		JLabel[] label_list = new JLabel[16];
 		String[] t = {
 				"编号 ：", "姓名 ：", "性别 ：", "年龄 ：", "出生日期 ：", "身高(cm) ：", "体重(kg) ：",
@@ -113,11 +113,11 @@ public class NewDialog extends JDialog implements ActionListener, KeyListener {
 		};
 		
 		for (int i = 0; i < label_list.length; i++) {
-			// 文本标签初始化
+			// Text label initialization
 			label_list[i] = new JLabel(t[i]);
 			label_list[i].setFont(font.getFont());
 			
-			// 文本框初始化
+			// Text box initialization
 			tx[i] = new JTextField();
 			tx[i].setFont(font.getFont());
 			tx[i].setHorizontalAlignment(JTextField.CENTER);
@@ -126,7 +126,7 @@ public class NewDialog extends JDialog implements ActionListener, KeyListener {
 			
 		}
 		
-		// 基本信息区初始化
+		// Basic information area initialization
 		Border tb1 = BorderFactory.createTitledBorder(new LineBorder(Color.DARK_GRAY), "基本信息", TitledBorder.LEFT,  TitledBorder.DEFAULT_POSITION, font.getFont());
 		basic_info.setBorder(tb1);
 		
@@ -140,7 +140,7 @@ public class NewDialog extends JDialog implements ActionListener, KeyListener {
 		label_list[Code].setBounds(50, 30, 60, 30);
 		tx[Code].setBounds(140, 30, 200, 30);
 
-		// 复选框自动编号设置
+		// Check box automatic numbering setting
 		basic_info.add(auto);
 		auto.setFont(font.getFont());
 		auto.setBounds(380, 30, 100, 30);
@@ -179,7 +179,7 @@ public class NewDialog extends JDialog implements ActionListener, KeyListener {
 		label_list[Weight].setBounds(250, 135, 90, 30);
 		tx[Weight].setBounds(340, 135, 80, 30);
 		
-		// 添加按键事件响应
+		// Add key event response
 		tx[Height].addKeyListener(this);
 		tx[Weight].addKeyListener(this);
 		
@@ -189,7 +189,7 @@ public class NewDialog extends JDialog implements ActionListener, KeyListener {
 		
 		basic_info.validate();
 		
-		// 通讯信息区初始化
+		// Communication information area initialization
 		Border tb2 = BorderFactory.createTitledBorder(new LineBorder(Color.DARK_GRAY), "联系信息", TitledBorder.LEFT,  TitledBorder.DEFAULT_POSITION , font.getFont());
 		contact_info.setBorder(tb2);
 		
@@ -214,7 +214,7 @@ public class NewDialog extends JDialog implements ActionListener, KeyListener {
 		contact_info.setLayout(null);
 		contact_info.validate();
 		
-		// 登记信息
+		// Registration information
 		Border tb3 = BorderFactory.createTitledBorder(new LineBorder(Color.DARK_GRAY), "登记信息", TitledBorder.LEFT,  TitledBorder.DEFAULT_POSITION , font.getFont());
 		hospitalization.setBorder(tb3);
 		
@@ -255,7 +255,7 @@ public class NewDialog extends JDialog implements ActionListener, KeyListener {
 		
 		hospitalization.validate();
 		
-		// 按键初始化
+		// Button initialization
 		buttons[Button_Ok] = new JButton("确定");
 		buttons[Button_Clear] = new JButton("清空");
 		buttons[Button_Close] = new JButton("退出");
@@ -275,14 +275,14 @@ public class NewDialog extends JDialog implements ActionListener, KeyListener {
 		
 		buttons[Button_Close].setBounds(520, 560, 80, 35);
 		buttons[Button_Close].setBackground(new Color(195, 17, 5));
-		// 时间选择按键
+		// Time selection button
 		basic_info.add(datePick);
 		datePick.setBounds(360, 100, 30, 30);
 		datePick.addActionListener(this);
 		datePick.setBackground(new Color(148, 207, 91));
 		
 		if (h2.getAutoCoding() == 1) {
-			// 自动生成ID
+			// Generate ID automatically
 			generatePatientID();
 			tx[Code].setEditable(false);
 			auto.setSelected(true);
@@ -309,23 +309,23 @@ public class NewDialog extends JDialog implements ActionListener, KeyListener {
 		
 		if (e.getSource() == buttons[Button_Close]) {
 			
-			// 关闭窗口
+			// close the window
 			this.dispose();
 			
 		} else if (e.getSource() == buttons[Button_Clear]) {
 			
-			// 清空窗口
+			// Clear window
 			for (int i = 1; i < tx.length; i++)
 				tx[i].setText(null);
 			sex.setSelectedIndex(0);
 			
 		} else if (e.getSource() == buttons[Button_Ok]) {
 
-			// 确认
+			// confirm
 			ok();
 			
 		} else if (e.getSource() == auto) {
-			// 自动编号设置
+			// Automatic number setting
 			if (auto.isSelected()) {
 				tx[Code].setEditable(false);
 				generatePatientID();
@@ -355,7 +355,7 @@ public class NewDialog extends JDialog implements ActionListener, KeyListener {
 	}
 	
 	/**
-	 * 判断表单信息是否规范，插入数据库
+	 * Determine whether the form information is standardized and insert it into the database
 	 */
 	private void ok() {
 		PatientInitStruct pis = new PatientInitStruct();
