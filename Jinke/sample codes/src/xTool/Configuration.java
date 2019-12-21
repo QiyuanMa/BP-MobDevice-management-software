@@ -65,23 +65,23 @@ public class Configuration {
 		H2_DB h2 = new H2_DB();
 		for (int i = 0; i < items.length; i++) {
 			switch (items[i]) {
-				case "0":				//空
+				case "0":				// null
 					items[i] = "";
 					break;
-				case "1":				//测量日期
+				case "1":				// Measurement date
 					items[i] = h2.getReviewTime(Cache.getDate());
 					break;
-				case "2":				//当前日期
+				case "2":				// Current date
 					Calendar calendar = Calendar.getInstance();
 					items[i] = calendar.get(Calendar.YEAR) + "-" + (calendar.get(Calendar.MONTH) + 1) + "-" + calendar.get(Calendar.DAY_OF_MONTH);
 					break;
-				case "3":				//测量类型
+				case "3":				// Measurement type
 					items[i] = "24hABPM";
 					break;
-				case "4":				//姓名
+				case "4":				// name
 					items[i] = Cache.getName();
 					break;
-				case "5":				//ID
+				case "5":				// ID
 					items[i] = Cache.getCode();
 					break;
 				default:
