@@ -35,19 +35,19 @@ public class OpenDialog extends JDialog implements ActionListener, MouseListener
 	 */
 	private static final long serialVersionUID = -4957883459775963618L;
 
-	// 搜索框
+	// search bar
 	private JTextField search = new JTextField();
 	
-	// 放大镜图标
+	// Magnifying glass icon
 	private JLabel label = new JLabel(new ImageIcon("./icon/search.png"));
 	
-	// 按键
+	// button
 	private JButton[] buttons = new JButton[3];
 	
-	// 显示表格
+	// Show table
 	private JTable table = null;
 	
-	// 数据库及字体
+	// database and font
 	private MyFont font = new MyFont();
 	private H2_DB h2 = new H2_DB();
 	
@@ -56,7 +56,7 @@ public class OpenDialog extends JDialog implements ActionListener, MouseListener
 	
 	public OpenDialog(JFrame f, Point p, Dimension d) {
 		
-		// 父类构造函数
+		// Parent class constructor
 		super(f, "患者信息列表", true);
 //		frame = (MainFrame)f;
 		setLayout(null);
@@ -65,11 +65,11 @@ public class OpenDialog extends JDialog implements ActionListener, MouseListener
 		int w = 800, h = 600;
 		setBounds(p.x + (d.width - w) / 2, p.y + (d.height - h) / 2, w, h);
 		
-		// 设置放大镜图标
+		// Set magnifying glass icon
 		this.add(label);
 		label.setBounds(510, 30, 30, 30);
 		
-		// 设置搜索框
+		// Set search box
 		this.add(search);
 		search.setBounds(550, 30, 200, 30);
 		search.setFont(font.getFont());
@@ -77,9 +77,9 @@ public class OpenDialog extends JDialog implements ActionListener, MouseListener
 		search.setSelectionColor(new Color(148, 207, 91));
 		search.addActionListener(this);
 		
-		// 新建table
+		// New table
 		table = new JTable(new PatientListModel(h2.getPatientList()));
-		// 设置列不可移动
+		// Set columns not moveable
 		table.getTableHeader().setReorderingAllowed(false);
 
 		table.setFont(font.getFont());
@@ -92,7 +92,7 @@ public class OpenDialog extends JDialog implements ActionListener, MouseListener
 		table.setSelectionBackground(new Color(148, 207, 91));
 		table.addMouseListener(this);
 				
-		// 滚动页面
+		// Scroll page
 		JScrollPane sp = new JScrollPane(table);
 
 		sp.validate();
@@ -137,10 +137,10 @@ public class OpenDialog extends JDialog implements ActionListener, MouseListener
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == search) {
-			// 更新表格
+			// Update form
 			table.setModel(new PatientListModel(h2.getPatientList(search.getText().toString())));
 		} else if (e.getSource() == buttons[1]) {
-			// 删除患者
+			// Delete patient
 			int rows[] = table.getSelectedRows();
 			if (rows.length == 0) {
 				MessageDialog.showError(this, "未选中患者！");
@@ -155,7 +155,7 @@ public class OpenDialog extends JDialog implements ActionListener, MouseListener
 				table.setModel(new PatientListModel(h2.getPatientList()));
 			}
 		} else if (e.getSource() == buttons[0]) {
-			// 确定
+			// determine
 			if (table.getSelectedRowCount() == 1) {
 				flag = table.getValueAt(table.getSelectedRow(), 0).toString();
 				this.dispose();
@@ -163,7 +163,7 @@ public class OpenDialog extends JDialog implements ActionListener, MouseListener
 				MessageDialog.showError(this, "一次只可打开一位患者的信息");
 			}
 		} else if (e.getSource() == buttons[2]) {
-			// 导出患者
+			// Export patient info
 			int rows[] = table.getSelectedRows();
 			String s[] = new String[rows.length];
 			for (int i = 0; i < rows.length; i++)
