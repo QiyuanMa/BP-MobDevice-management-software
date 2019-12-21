@@ -2,12 +2,12 @@ package xTool;
 
 public class Cache {
 	
-	// 记录盒端口号
+	// Recording Box Port Number
 	private static String com = null;
 	
 	
 	/**
-	 * 设置端口号
+	 * Set the port number
 	 * @param tString
 	 */
 	public static void setCom(String tString) {
@@ -16,19 +16,19 @@ public class Cache {
 	
 	
 	/**
-	 * 获得端口号
+	 * Get port number
 	 * @return
 	 */
 	public static String getCom() {
 		return com;
 	}
 	
-	// 患者id
+	// patient id
 	private static String code = null;
 	
 	
 	/**
-	 * 设置ID
+	 * Set ID
 	 * @param key
 	 */
 	public static void setCode(String key) {
@@ -37,7 +37,7 @@ public class Cache {
 	
 	
 	/**
-	 * 返回ID
+	 * return ID
 	 * @return
 	 */
 	public static String getCode() {
@@ -45,13 +45,13 @@ public class Cache {
 	}
 	
 	
-	// 患者年龄以及姓名
+	// Patient age and name
 	private static String name = null, sex = null;
 	private static int age = 0;
 	
 	
 	/**
-	 * 设置姓名年龄
+	 * Set name age
 	 * @param new_age
 	 * @param new_name
 	 */
@@ -77,7 +77,7 @@ public class Cache {
 	
 	
 	/**
-	 * 获得年龄
+	 * return age
 	 * @return
 	 */
 	public static int getAge() {
@@ -86,7 +86,7 @@ public class Cache {
 	
 	
 	/**
-	 * 获得年龄
+	 * return age
 	 * @return
 	 */
 	public static String getName() {
@@ -105,7 +105,7 @@ public class Cache {
 	
 	
 	/**
-	 * 设置日期
+	 * set date
 	 * @param new_date
 	 */
 	public static void setDate(String new_date) {
@@ -113,7 +113,7 @@ public class Cache {
 	}
 	
 	/**
-	 * 获得日期
+	 * return date
 	 * @return
 	 */
 	public static String getDate() {
