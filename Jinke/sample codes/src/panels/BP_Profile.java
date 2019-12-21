@@ -42,44 +42,44 @@ public class BP_Profile{
 		table = t;
 		conf  = h2.getConfiguration();
 		XYDataset xyDataset = createDataset();
-		StandardChartTheme standardChartTheme=new StandardChartTheme("CN");                     //设置标题字体
-        standardChartTheme.setExtraLargeFont(new Font("Yahei Consolas Hybrid",Font.BOLD,20));                    //设置图例的字体
-        standardChartTheme.setRegularFont(new Font("Yahei Consolas Hybrid",Font.PLAIN,12));					//设置轴向的字体          
+		StandardChartTheme standardChartTheme=new StandardChartTheme("CN");                     //Set title font
+        standardChartTheme.setExtraLargeFont(new Font("Yahei Consolas Hybrid",Font.BOLD,20));                    //Set the font of the legend
+        standardChartTheme.setRegularFont(new Font("Yahei Consolas Hybrid",Font.PLAIN,12));					//Set inline font   
         standardChartTheme.setLargeFont(new Font("Yahei Consolas Hybrid",Font.PLAIN,12)); 
-        standardChartTheme.setRangeGridlinePaint(Color.GRAY);//纵坐标格线颜色                
-        standardChartTheme.setDomainGridlinePaint(Color.GRAY);//横坐标格线颜色              
+        standardChartTheme.setRangeGridlinePaint(Color.GRAY);//Ordinate grid color          
+        standardChartTheme.setDomainGridlinePaint(Color.GRAY);//Abscissa grid color         
         standardChartTheme.setPlotBackgroundPaint(Color.WHITE);
         
-        ChartFactory.setChartTheme(standardChartTheme); //应用主题样式      
+        ChartFactory.setChartTheme(standardChartTheme); //Apply theme style     
 		chart = ChartFactory.createTimeSeriesChart(  
-	            "血压轮廓图",      // 图表名  
-	            "时间",               // 横轴标签文字 
-	            "血压(mmHg)/心率(1/min)",               // 纵轴标签文字  
-	            xyDataset,          // 图表的数据集合 
-	            false,               // 是否显示图表中每条数据序列的说明
-	            true,              // 是否显示工具提示
-	            false);             // 是否显示图表中设置的url网络连接   
+	            "血压轮廓图",      // chart name
+	            "时间",               // Horizontal axis label text
+	            "血压(mmHg)/心率(1/min)",               // Vertical axis label text 
+	            xyDataset,          // Data collection for chart
+	            false,               // Whether to show a description of each data series in the chart
+	            true,              // Whether to show tooltips
+	            false);             // Whether to display the url network connection set in the chart   
 		
 	    XYPlot xyPlot = (XYPlot) chart.getPlot();  
 	    xyPlot.setNoDataMessage("没有足够的测量值用于评估。");
 	    XYDifferenceRenderer diffRenderer = new XYDifferenceRenderer(  
-	    		new Color(140, 140, 220),     // 序列线1超过序列线2时填充的的颜色 
-	    		Color.WHITE,   // 序列线2超过序列线1时填充的的颜色  
-	    		false);         // 是否描绘数据点  
-	    // 设置XYPlot的描绘器为我们自定义的XYDifferenceRenderer    
+	    		new Color(140, 140, 220),     // Color filled when sequence line 1 exceeds sequence line 2
+	    		Color.WHITE,   // Color filled when sequence line 2 exceeds sequence line 1
+	    		false);         // Whether to plot data points
+	    // Set XYPlot's renderer to our custom XYDifferenceRenderer   
 	    NumberAxis numberaxis = (NumberAxis)xyPlot.getRangeAxis(); 
         numberaxis.setAutoRangeIncludesZero(false); 
 	    xyPlot.setRenderer(0, diffRenderer);  
-	    // 设置前景色的透明度为50%  
+	    // Set the foreground color transparency to 50%
 	    xyPlot.setForegroundAlpha(0.5F);
 	    
 //	    DateAxis dateAxis = (DateAxis)xyPlot.getDomainAxis();
-//	    dateAxis.setAutoTickUnitSelection(true);//设置不采用自动选择刻度值
-//	    dateAxis.setTickMarkPosition(DateTickMarkPosition.MIDDLE);//设置标记的位置
-//	    dateAxis.setStandardTickUnits(DateAxis.createStandardDateTickUnits());//设置标准的时间刻度单位
-//	    dateAxis.setTickUnit(new DateTickUnit(DateTickUnitType.HOUR, 1, new SimpleDateFormat("HH:MM")));//设置时间刻度的间隔
+//	    dateAxis.setAutoTickUnitSelection(true);//Setting does not use automatic selection of scale values
+//	    dateAxis.setTickMarkPosition(DateTickMarkPosition.MIDDLE);//Set marker position
+//	    dateAxis.setStandardTickUnits(DateAxis.createStandardDateTickUnits());//Set the standard time scale unit
+//	    dateAxis.setTickUnit(new DateTickUnit(DateTickUnitType.HOUR, 1, new SimpleDateFormat("HH:MM")));//Set the time scale interval
 	    
-	// 使JFreeChart应用当前设置的主题  
+	// Make JFreeChart apply the currently set theme
 	    ChartUtils.applyCurrentTheme(chart);  
 	    DateAxis dateaxis = (DateAxis)xyPlot.getDomainAxis(); 
 		dateaxis.setDateFormatOverride(new SimpleDateFormat("HH:MM"));
@@ -110,7 +110,7 @@ public class BP_Profile{
 			TimeSeriesCollection dataset = new TimeSeriesCollection();
     		return dataset;
     	}
-		// 生成数据序列
+		// Generate data sequence
     	this.series[0] = new TimeSeries("收缩压");  
     	this.series[1] = new TimeSeries("舒张压");
     	this.series[2] = new TimeSeries("平均压");
@@ -157,7 +157,7 @@ public class BP_Profile{
     		}
     		calendar.add(Calendar.SECOND, +30);
     	}
-    	// 将两条数据序列都放在一个数据集合中  
+    	//Put both data series in one data set  
     	
     	TimeSeriesCollection dataset = new TimeSeriesCollection(); 
     	dataset.addSeries(this.series[0]);
