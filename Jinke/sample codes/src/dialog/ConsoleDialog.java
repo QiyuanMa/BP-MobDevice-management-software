@@ -20,7 +20,7 @@ public class ConsoleDialog extends JDialog {
 	private JLabel msg = new JLabel();
 	private MyFont font = new MyFont();
 	public ConsoleDialog(JFrame f, Point p, Dimension d) {
-		// 父类构造函数
+		// Parent class constructor
 		super(f, "提示信息", false);
 		setLayout(new BorderLayout());
 		setResizable(true);
