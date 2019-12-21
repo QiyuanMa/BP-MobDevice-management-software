@@ -24,7 +24,7 @@ import xTool.Cache;
 
 
 /**
- * 显示患者各个日期记录个数
+ * Display the number of records for each patient of each date
  * @author Lova
  *
  */
@@ -32,20 +32,20 @@ public class DataListDialog extends JDialog implements ActionListener, MouseList
 	
 	private static final long serialVersionUID = 5509991194549528227L;
 
-	// 按键
+	// button
 	private JButton[] buttons = new JButton[2];
 	
-	// 表格
+	// table
 	private JTable table = null;
 	
-	// 表头
+	// Header
 	private static final String[] title = {"检测日期", "有效记录"};
 	
-	// 数据库及字体
+	// Database and font
 	private H2_DB h2 = new H2_DB();
 	private MyFont font = new MyFont();
 	
-	// 菜单项索引
+	// Menu item index
 //	private static final int	Data_Export_Excel 	= 8,
 //								Data_Delete 		= 9;
 	
@@ -64,7 +64,7 @@ public class DataListDialog extends JDialog implements ActionListener, MouseList
 		int w = 350, h = 450;
 		setBounds(p.x + (d.width - w) / 2, p.y + (d.height - h) / 2, w, h);
 		
-		// 表格初始化及格式设置
+		// Form initialization and formatting
 		table = new JTable(new PatientListModel(h2.getDataList(code), title));
 		table.getTableHeader().setReorderingAllowed(false);
 		table.setFont(font.getFont());
@@ -85,7 +85,7 @@ public class DataListDialog extends JDialog implements ActionListener, MouseList
 		this.add(sp);
 		sp.setBounds(55, 30, 240, 300);
 
-		// 按键设置
+		// Key setting
 		buttons[0] = new JButton("确定");
 		buttons[1] = new JButton("关闭");
 		
