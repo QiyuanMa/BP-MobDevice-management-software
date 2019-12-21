@@ -30,23 +30,23 @@ public class BP_Piegraph {
 	public BP_Piegraph(JTable t) throws NumberFormatException, ParseException {
 		table = t;
 		
-		StandardChartTheme standardChartTheme=new StandardChartTheme("CN");                     //设置标题字体
-        standardChartTheme.setExtraLargeFont(new Font("Yahei Consolas Hybrid",Font.BOLD,16));                    //设置图例的字体
-        standardChartTheme.setRegularFont(new Font("Yahei Consolas Hybrid",Font.PLAIN,12));					//设置轴向的字体          
+		StandardChartTheme standardChartTheme=new StandardChartTheme("CN");                     //Set title font
+        standardChartTheme.setExtraLargeFont(new Font("Yahei Consolas Hybrid",Font.BOLD,16));                    //Set the font of the legend
+        standardChartTheme.setRegularFont(new Font("Yahei Consolas Hybrid",Font.PLAIN,12));					//Set inline font          
         standardChartTheme.setLargeFont(new Font("Yahei Consolas Hybrid",Font.PLAIN,12)); 
-        standardChartTheme.setRangeGridlinePaint(Color.GRAY);//纵坐标格线颜色                
-        standardChartTheme.setDomainGridlinePaint(Color.GRAY);//横坐标格线颜色              
+        standardChartTheme.setRangeGridlinePaint(Color.GRAY);//Ordinate grid color                
+        standardChartTheme.setDomainGridlinePaint(Color.GRAY);//Abscissa grid color              
         standardChartTheme.setPlotBackgroundPaint(Color.WHITE);
         
         DefaultCategoryDataset dataset = getPieDataSet();
-        ChartFactory.setChartTheme(standardChartTheme); //应用主题样式      
+        ChartFactory.setChartTheme(standardChartTheme); //Apply theme style
         chart = ChartFactory.createMultiplePieChart(
-        		"超过极限值",      // 图表名  
-	            dataset,          // 图表的数据集合 
+        		"超过极限值",      // chart name
+	            dataset,          // Data collection for chart
 	            TableOrder.BY_ROW,
-	            false,               // 是否显示图表中每条数据序列的说明
-	            true,              // 是否显示工具提示
-	            false);             // 是否显示图表中设置的url网络连接   
+	            false,               // Whether to show a description of each data series in the chart
+	            true,              // Whether to show tooltips
+	            false);             // Whether to display the url network connection set in the chart 
         
         MultiplePiePlot multiplepieplot = (MultiplePiePlot) chart.getPlot();
         JFreeChart jChart = multiplepieplot.getPieChart();
