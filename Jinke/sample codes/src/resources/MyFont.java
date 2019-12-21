@@ -14,7 +14,7 @@ public class MyFont {
 	
 	
 	/**
-	 * font构造函数
+	 * font constructor
 	 * @param style
 	 * @param size
 	 */
@@ -31,7 +31,7 @@ public class MyFont {
 	
 	
 	/**
-	 * font构造函数，正常，20磅
+	 * font constructor, normal, 20 points
 	 */
 	public MyFont() {
 		try {
