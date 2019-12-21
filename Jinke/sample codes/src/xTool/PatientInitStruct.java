@@ -2,37 +2,37 @@ package xTool;
 
 public class PatientInitStruct {
 	
-					// 患者ID
+					// patient ID
 	public String	patient_id,
-					// 姓名
+					// name
 					patient_name,
-					// 年龄
+					// age
 					patient_age,
-					// 出生日期
+					// birth date
 					patient_birth,
-					// 身高
+					// height
 					patient_height,
-					// 体重
+					// weight
 					patient_weight,
-					// 联系方式
+					// phone
 					patient_phone,
-					// 邮政编码
+					// postcode
 					patient_postcode,
-					// 住址
+					// address
 					patient_address,
-					// 科室
+					// department
 					patient_department,
-					// 床号
+					// bet
 					patient_bed,
-					// 医保编号
+					// medins
 					patient_medins,
-					// 门诊号
+					// clinic
 					patient_clinic,
-					// 住院号
+					// hospital
 					patient_hospital,
-					// 病案号
+					// medrecord
 					patient_medrecord;
-	public int		// 性别
+	public int		// sex
 					patient_sex;
 
 
